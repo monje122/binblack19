@@ -1,0 +1,416 @@
+/* =========================
+   🎨 Tema & reset modernito
+   ========================= */
+:root{
+  --bg:#f7f8fc;
+  --surface: rgba(255,255,255,0.08);
+  --surface-strong: rgba(255,255,255,0.12);
+  --text:#ffffff;
+  --muted:#c9d1d9;
+  --accent:#FFA500;
+  --accent-2:#F9E65C;
+  --danger:#ef4444;
+  --success:#22c55e;
+  --shadow: 0 10px 30px rgba(0,0,0,0.25);
+  --radius:16px;
+  --radius-sm:12px;
+  --radius-lg:28px;
+  --blur: 16px;
+  --speed: .25s;
+  --speed-fast: .15s;
+  --outline: 2px solid rgba(255,165,0,.55);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+  color:var(--text);
+  background:#0b102e;
+  background-image:
+    radial-gradient(1200px 800px at 10% -10%, #1d2a6b 0%, transparent 60%),
+    radial-gradient(900px 600px at 110% 10%, #13205a 0%, transparent 60%),
+    url('https://i.postimg.cc/KjqYxWn3/fondo-binblack.avif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Reduce motion si el usuario lo pide */
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important}
+}
+
+/* =========================
+   📦 Secciones (cards)
+   ========================= */
+section{
+  display:none;
+  padding: clamp(18px, 3vw, 28px);
+  width:min(960px, 92vw);
+  margin: clamp(16px,4vh,40px) auto;
+  text-align:center;
+  background: var(--surface);
+  backdrop-filter: blur(var(--blur)) saturate(130%);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(130%);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transform: translateY(6px);
+  opacity:.98;
+  transition: transform var(--speed), box-shadow var(--speed), background var(--speed);
+}
+section:hover{
+  transform: translateY(0);
+  box-shadow: 0 16px 40px rgba(0,0,0,.35);
+}
+section:not(.oculto){ display:block; }
+
+/* =========================
+   🖼️ Marca / cabecera
+   ========================= */
+.logo{
+  display:block;
+  margin: 20px auto 10px;
+  width:min(280px, 60vw);
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,.4));
+  transition: transform var(--speed), filter var(--speed);
+}
+.logo:hover{ transform: scale(1.02); filter: drop-shadow(0 10px 24px rgba(0,0,0,.5)); }
+
+/* Reloj */
+#hora-venezuela{
+  margin-top:10px;
+  font-weight:700;
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--accent-2);
+  letter-spacing:.2px;
+}
+
+/* =========================
+   🔘 Inputs & botones
+   ========================= */
+input, button{
+  width:100%;
+  margin: 10px auto;
+  padding: 12px 14px;
+  font-size: 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  outline: none;
+  transition: transform var(--speed-fast), background var(--speed-fast), border-color var(--speed-fast), box-shadow var(--speed-fast);
+}
+
+input::placeholder{ color: rgba(255,255,255,.55); }
+
+input:focus{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 6px rgba(255,165,0,.12);
+  background: rgba(255,255,255,.10);
+}
+
+button{
+  cursor:pointer;
+  background: linear-gradient(180deg, var(--accent), #ff9f1a);
+  color:#000;
+  border:none;
+  font-weight:700;
+  letter-spacing:.3px;
+  box-shadow: 0 6px 18px rgba(255,165,0,.25);
+  transform: translateY(0);
+}
+button:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(255,165,0,.32);
+  filter: brightness(1.02);
+}
+button:active{
+  transform: translateY(1px) scale(.99);
+  filter: brightness(.98);
+}
+button:focus-visible{ outline: var(--outline); outline-offset: 2px; }
+
+/* Botón flotante fijo (mantiene tu ID) */
+.btn-fijo{
+  position: fixed;
+  bottom: 22px;
+  left:50%;
+  transform: translateX(-50%);
+  padding: 14px 26px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent), #ff9f1a);
+  color:#000;
+  box-shadow: 0 12px 30px rgba(255,165,0,.35);
+  z-index: 1100;
+}
+
+/* WhatsApp CTA */
+#btnWhatsapp{
+  background-color:#25d366;
+  color:white;
+  padding: 12px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 800;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  transition: transform var(--speed-fast), box-shadow var(--speed-fast), filter var(--speed-fast);
+}
+#btnWhatsapp:hover{ transform: translateY(-1px); box-shadow: 0 10px 26px rgba(37,211,102,.35); filter: saturate(110%); }
+
+/* =========================
+   🧮 Selector de cantidad
+   ========================= */
+.selector-cantidad{
+  display:flex; justify-content:center; align-items:center; gap:12px; margin:18px 0;
+}
+.selector-cantidad button{
+  width:44px; height:44px; font-size:22px; font-weight:900; line-height:0;
+  border-radius: 12px;
+  background: rgba(255,255,255,.1);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.1);
+}
+.selector-cantidad button:hover{ background: rgba(255,255,255,.18); }
+.selector-cantidad input{
+  max-width: 90px; text-align:center; font-weight:800;
+  background: rgba(255,255,255,.08);
+}
+
+/* =========================
+   🧊 Cartones grid
+   ========================= */
+#contenedor-cartones{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(58px,1fr));
+  gap: 12px;
+  justify-content:center;
+  margin: 20px 0;
+}
+
+.carton{
+  width:100%; aspect-ratio:1/1;
+  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(240,240,240,.9));
+  color:#0f172a;
+  border: 2px solid rgba(0,0,0,.15);
+  border-radius: 14px;
+  font-size: 18px; font-weight:900;
+  display:grid; place-items:center;
+  user-select:none; cursor:pointer;
+  transition: transform var(--speed), box-shadow var(--speed), border-color var(--speed), filter var(--speed);
+}
+.carton:hover{ transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.2); }
+.carton.seleccionado{
+  background: linear-gradient(180deg, #ff5757, #e11d48);
+  color:white; border-color: #be123c;
+  box-shadow: 0 10px 24px rgba(225,29,72,.35);
+  animation: pulseGlow .9s ease-in-out infinite alternate;
+}
+.carton.ocupado{
+  background: linear-gradient(180deg, #6b7280, #4b5563);
+  color:white; cursor:not-allowed; border-color:#374151; filter: grayscale(.1) opacity(.9);
+}
+.carton.bloqueado{ filter: grayscale(.5) opacity(.7); cursor:not-allowed; }
+
+@keyframes pulseGlow{
+  to{ box-shadow: 0 0 28px rgba(225,29,72,.55); }
+}
+
+/* Contador disponible */
+#contadorCartones{
+  font-weight:800;
+  margin: 6px 0 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  display:inline-block;
+}
+
+/* =========================
+   🪟 Modal
+   ========================= */
+.modal{
+  position:fixed; inset:0;
+  display:flex; justify-content:center; align-items:center;
+  background: rgba(0,0,0,.55);
+  z-index:1000;
+  opacity:0; pointer-events:none;
+  transition: opacity var(--speed);
+}
+.modal:not(.oculto){ opacity:1; pointer-events:all; }
+
+.modal-contenido{
+  width:min(420px, 92vw);
+  background: rgba(255,255,255,.96);
+  color:#0b102e;
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 30px 70px rgba(0,0,0,.45);
+  transform: translateY(10px) scale(.98);
+  transition: transform var(--speed);
+}
+.modal:not(.oculto) .modal-contenido{ transform: translateY(0) scale(1); }
+#modal-terminos .modal-contenido{ color:#0b102e; }
+
+/* =========================
+   📊 Tablas (admin/listas)
+   ========================= */
+table{
+  width:100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;
+  overflow:hidden; border-radius: 12px; border: 1px solid rgba(255,255,255,.12);
+}
+thead tr{ background: rgba(255,255,255,.08); }
+th, td{
+  padding: 10px 12px; text-align:center; border-bottom: 1px solid rgba(255,255,255,.08);
+}
+tbody tr:hover{ background: rgba(255,255,255,.06); }
+
+#tabla-comprobantes img{
+  width: 84px; border-radius: 8px; box-shadow: 0 6px 16px rgba(0,0,0,.25);
+}
+
+/* Estado circulitos */
+.estado-circulo{
+  display:inline-block; width:22px; height:22px; border-radius:50%; margin-right:4px; vertical-align:middle;
+  box-shadow: inset 0 0 0 3px rgba(255,255,255,.35), 0 0 0 3px rgba(255,255,255,.06);
+}
+.estado-circulo.rojo{ background: var(--danger); }
+.estado-circulo.verde{ background: var(--success); }
+
+/* Botones acción fila */
+.btn-accion{
+  background: transparent; border:none; font-size: 20px; cursor: pointer; padding: 6px 8px; border-radius: 8px;
+  transition: background var(--speed-fast), transform var(--speed-fast);
+}
+.btn-accion:hover{ background: rgba(255,255,255,.1); transform: translateY(-1px); }
+.btn-aprobar{ color: var(--success); }
+.btn-rechazar{ color: var(--danger); }
+.btn-eliminar{ color: #ff7849; }
+
+/* =========================
+   🧭 Redes sociales (dock)
+   ========================= */
+#redes-sociales{
+  position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+  display:flex; gap: 16px; z-index: 999;
+  padding: 8px 14px;
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.3);
+}
+#redes-sociales img{
+  width: 40px; height: 40px; border-radius: 10px;
+  transition: transform var(--speed-fast), filter var(--speed-fast);
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.35));
+}
+#redes-sociales img:hover{ transform: translateY(-2px) scale(1.05); filter: saturate(120%); }
+
+/* =========================
+   🖨️ Print lista aprobados
+   ========================= */
+@media print{
+  body *{ visibility:hidden; }
+  #listaAprobados, #listaAprobados *{ visibility: visible; }
+  #listaAprobados{ position:absolute; inset:0; width:100%; background:white; color:black; }
+}
+
+/* =========================
+   🧩 Utilidades
+   ========================= */
+.oculto{ display:none !important; }
+a[href*="wa.me"]{ color:#25D366; font-weight:700; text-decoration:none; }
+a[href*="wa.me"]:hover{ text-decoration:underline; color:#1ebe57; }
+
+/* Títulos del bloque de pago un poco más fuertes */
+#pago h2, #pago p{ font-weight:800; }
+
+/* Responsivo */
+@media (max-width: 600px){
+  .logo{ width: 220px; }
+  #contenedor-cartones{ gap:10px; }
+  .btn-fijo{ padding: 12px 18px; font-size: 14px; }
+}
+/* --- Evitar solapamiento de #redes-sociales --- */
+
+/* Añade espacio inferior a la sección de bienvenida para que los botones no queden tapados */
+#bienvenida {
+  padding-bottom: 120px; /* espacio extra para el dock de redes */
+}
+
+/* Red de botones flotantes centrado con margen inferior seguro */
+#redes-sociales {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  z-index: 999;
+  background: rgba(255,255,255,0.15);
+  padding: 10px 20px;
+  border-radius: 40px;
+  backdrop-filter: blur(12px);
+}
+
+/* Para pantallas pequeñas: subirlo un poco más */
+@media (max-width: 600px){
+  #bienvenida { padding-bottom: 140px; }
+  #redes-sociales { bottom: 40px; }
+}
+/* Cartones ocupados en rojo intenso */
+.carton.ocupado {
+  background: linear-gradient(180deg, #ff3b30, #c53030);
+  color: #fff;
+  border-color: #991b1b;
+  cursor: not-allowed;
+  filter: none;
+  box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3);
+  position: relative;
+}
+
+/* Una X semitransparente encima opcional */
+.carton.ocupado::after {
+  content: "✖";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  color: rgba(255,255,255,0.6);
+  pointer-events: none;
+}
+#modal-carton .modal-contenido {
+  background: #fff;
+  padding: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#imagen-carton-modal {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: none; /* <- quitar límite de 300px */
+}
+
+#modal-carton .modal-contenido > div {
+  width: 100%;
+  padding: 16px;
+  background: #fff;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
