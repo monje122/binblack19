@@ -27,11 +27,11 @@ body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
   color:var(--text);
-  background:#0b102e;
+  background:#000000;
   background-image:
     radial-gradient(1200px 800px at 10% -10%, #1d2a6b 0%, transparent 60%),
-    radial-gradient(900px 600px at 110% 10%, #13205a 0%, transparent 60%),
-    url('https://i.postimg.cc/KjqYxWn3/fondo-binblack.avif');
+    radial-gradient(900px 600px at 110% 10%, #060a1c 0%, transparent 60%),
+    url('https://i.postimg.cc/cHGNWfH9/fondo-binblack.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
