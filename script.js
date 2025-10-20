@@ -1,5 +1,5 @@
-const supabaseUrl = 'https://lmectusdplbzoreybbbz.supabase.co';
-const supabase = window.supabase.createClient(supabaseUrl, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxtZWN0dXNkcGxiem9yZXliYmJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA3NDU5NjYsImV4cCI6MjA3NjMyMTk2Nn0.T9xn8gl5N9kLw58hF2LUKdf7NKOpWC1GdqOMCbtcCpA');
+const supabaseUrl = 'https://rwvxdjhpsyfwylqwhzsb.supabase.co';
+const supabase = window.supabase.createClient(supabaseUrl, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3dnhkamhwc3lmd3lscXdoenNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA4Nzc5MjQsImV4cCI6MjA3NjQ1MzkyNH0.qFOYVLYs8RMmfJjOWhU2TvVrlQe8Bgpw6E5G0k0FbqY');
 
 // Variables globales
 let cartonesOcupados = [];
