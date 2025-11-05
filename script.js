@@ -1705,11 +1705,77 @@ async function liberarHuerfanos() {
 
 document.getElementById('btnVerHuerfanos')?.addEventListener('click', verHuerfanos);
 document.getElementById('btnLiberarHuerfanos')?.addEventListener('click', liberarHuerfanos);
-// Agrega esto SOLO al final de tu script.js actual
-document.getElementById('btnContinuarCartones').addEventListener('click', function() {
-  if (usuario.cartones.length === cantidadPermitida) {
-    mostrarVentana('pago');
-  } else {
-    alert(`Selecciona ${cantidadPermitida} cartones primero`);
+// =============================================
+// FIX ESPECÍFICO PARA CHROME 142 - BOTÓN CONTINUAR
+// =============================================
+
+function setupChrome142ButtonFix() {
+  const continueButton = document.getElementById('btnContinuarCartones');
+  
+  if (!continueButton) {
+    console.log('Botón continuar no encontrado');
+    return;
   }
-});
+  
+  console.log('Aplicando fix Chrome 142 para botón continuar');
+  
+  // Remover cualquier event listener existente
+  continueButton.replaceWith(continueButton.cloneNode(true));
+  
+  const newButton = document.getElementById('btnContinuarCartones');
+  
+  // Función para manejar el click
+  function handleContinueClick() {
+    console.log('Chrome 142 - Botón continuar funcionando');
+    console.log('Cartones seleccionados:', usuario.cartones.length);
+    console.log('Cartones requeridos:', cantidadPermitida);
+    
+    // Validación
+    const required = modoCartones === 'fijo' ? cantidadFijaCartones : cantidadPermitida;
+    
+    if (usuario.cartones.length !== required) {
+      alert(`Debes seleccionar exactamente ${required} cartones antes de continuar. Tienes ${usuario.cartones.length} seleccionados.`);
+      return;
+    }
+    
+    // Navegar a pago
+    mostrarVentana('pago');
+  }
+  
+  // Múltiples event listeners para máxima compatibilidad
+  newButton.addEventListener('click', handleContinueClick);
+  
+  newButton.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    handleContinueClick();
+  }, { passive: false });
+  
+  newButton.addEventListener('pointerup', handleContinueClick);
+  
+  console.log('Fix Chrome 142 aplicado correctamente');
+}
+
+// Aplicar automáticamente para Chrome Mobile
+if (/Chrome\/142/.test(navigator.userAgent) && /Mobile/.test(navigator.userAgent)) {
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('Chrome 142 Mobile detectado - aplicando fix');
+    
+    // Aplicar cuando se cargue la página
+    setTimeout(setupChrome142ButtonFix, 1000);
+    
+    // También aplicar cuando se navegue a cartones
+    const originalShowSection = mostrarVentana;
+    mostrarVentana = function(sectionId) {
+      originalShowSection(sectionId);
+      
+      if (sectionId === 'cartones') {
+        setTimeout(setupChrome142ButtonFix, 300);
+      }
+    };
+  });
+} else {
+  // Para otros navegadores, aplicar normalmente
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(setupChrome142ButtonFix, 500);
+  });
+}
