@@ -1705,36 +1705,11 @@ async function liberarHuerfanos() {
 
 document.getElementById('btnVerHuerfanos')?.addEventListener('click', verHuerfanos);
 document.getElementById('btnLiberarHuerfanos')?.addEventListener('click', liberarHuerfanos);
-// Crea un área de debug visible
-function createDebugPanel() {
-  const debugDiv = document.createElement('div');
-  debugDiv.id = 'debug-panel';
-  debugDiv.style.cssText = `
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: rgba(0,0,0,0.8);
-    color: white;
-    padding: 10px;
-    z-index: 9999;
-    font-size: 12px;
-    max-width: 200px;
-    max-height: 300px;
-    overflow-y: auto;
-    border: 2px solid red;
-  `;
-  document.body.appendChild(debugDiv);
-  return debugDiv;
-}
-
-// Úsalo así:
-const debugPanel = createDebugPanel();
-function logToScreen(message) {
-  debugPanel.innerHTML += message + '<br>';
-  console.log(message);
-}
-
-// En tu botón:
+// Agrega esto SOLO al final de tu script.js actual
 document.getElementById('btnContinuarCartones').addEventListener('click', function() {
-  logToScreen('Click - Cartones: ' + usuario.cartones.length);
+  if (usuario.cartones.length === cantidadPermitida) {
+    mostrarVentana('pago');
+  } else {
+    alert(`Selecciona ${cantidadPermitida} cartones primero`);
+  }
 });
