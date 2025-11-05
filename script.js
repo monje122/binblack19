@@ -1705,3 +1705,40 @@ async function liberarHuerfanos() {
 
 document.getElementById('btnVerHuerfanos')?.addEventListener('click', verHuerfanos);
 document.getElementById('btnLiberarHuerfanos')?.addEventListener('click', liberarHuerfanos);
+
+// MEJORAS MÓVIL PARA EL ADMIN - Agregar al script.js
+function setupMobileAdmin() {
+  if (!/Mobi|Android/i.test(navigator.userAgent)) return;
+  
+  console.log('Configurando admin para móvil');
+  
+  // Hacer la tabla scrollable horizontalmente
+  const tabla = document.getElementById('tabla-comprobantes');
+  if (tabla) {
+    tabla.style.overflowX = 'auto';
+    tabla.style.webkitOverflowScrolling = 'touch';
+  }
+  
+  // Optimizar botones para touch
+  const botones = document.querySelectorAll('#panel-admin button');
+  botones.forEach(btn => {
+    btn.style.minHeight = '44px';
+    btn.style.padding = '12px 8px';
+  });
+  
+  // Mensaje para tablas grandes
+  const contenedorAdmin = document.getElementById('panel-admin');
+  if (contenedorAdmin && window.innerWidth < 768) {
+    const aviso = document.createElement('div');
+    aviso.innerHTML = '🔍 Desliza horizontalmente para ver toda la tabla';
+    aviso.style.cssText = 'text-align:center; padding:8px; font-size:12px; color:var(--accent-2); background:rgba(255,255,255,0.05); border-radius:8px; margin:10px 0;';
+    contenedorAdmin.insertBefore(aviso, contenedorAdmin.firstChild);
+  }
+}
+
+// Ejecutar cuando se entre al admin
+const originalEntrarAdmin = entrarAdmin;
+entrarAdmin = function() {
+  originalEntrarAdmin();
+  setTimeout(setupMobileAdmin, 100);
+};
