@@ -463,3 +463,318 @@ button, .carton, input, .btn-accion {
     transform: none !important;
   }
 }
+/* =========================
+   📱 ADMIN RESPONSIVE - MEJORADO PARA MÓVIL
+   ========================= */
+
+/* Panel admin general */
+#admin {
+  max-width: 95vw;
+  overflow-x: auto;
+}
+
+/* Contenedor del panel admin */
+#panel-admin {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Tabla de comprobantes - RESPONSIVE */
+#tabla-comprobantes {
+  width: 100%;
+  max-width: 100%;
+  font-size: 12px;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+#tabla-comprobantes thead,
+#tabla-comprobantes tbody,
+#tabla-comprobantes tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+#tabla-comprobantes th,
+#tabla-comprobantes td {
+  min-width: 80px;
+  padding: 8px 6px;
+  word-break: break-word;
+  white-space: normal;
+}
+
+/* Columnas específicas para móvil */
+@media (max-width: 768px) {
+  #tabla-comprobantes {
+    font-size: 11px;
+  }
+  
+  #tabla-comprobantes th:nth-child(1), /* Nombre */
+  #tabla-comprobantes td:nth-child(1) {
+    min-width: 100px;
+    max-width: 100px;
+  }
+  
+  #tabla-comprobantes th:nth-child(2), /* Teléfono */
+  #tabla-comprobantes td:nth-child(2) {
+    min-width: 90px;
+    max-width: 90px;
+  }
+  
+  #tabla-comprobantes th:nth-child(3), /* Cédula */
+  #tabla-comprobantes td:nth-child(3) {
+    min-width: 80px;
+    max-width: 80px;
+  }
+  
+  #tabla-comprobantes th:nth-child(4), /* Referido */
+  #tabla-comprobantes td:nth-child(4) {
+    min-width: 80px;
+    max-width: 80px;
+    display: none; /* Ocultar en móvil para ahorrar espacio */
+  }
+  
+  #tabla-comprobantes th:nth-child(5), /* Cartones */
+  #tabla-comprobantes td:nth-child(5) {
+    min-width: 70px;
+    max-width: 70px;
+  }
+  
+  #tabla-comprobantes th:nth-child(6), /* Referencia */
+  #tabla-comprobantes td:nth-child(6) {
+    min-width: 60px;
+    max-width: 60px;
+  }
+  
+  #tabla-comprobantes th:nth-child(7), /* Comprobante */
+  #tabla-comprobantes td:nth-child(7) {
+    min-width: 70px;
+    max-width: 70px;
+  }
+  
+  #tabla-comprobantes th:nth-child(8), /* Acción */
+  #tabla-comprobantes td:nth-child(8) {
+    min-width: 90px;
+    max-width: 90px;
+  }
+}
+
+/* Botones del admin - RESPONSIVE */
+#panel-admin .btn-admin,
+#cerrarVentasBtn,
+#abrirVentasBtn,
+#guardarPrecioBtn,
+#verListaBtn,
+#imprimirListaBtn,
+#btnVerHuerfanos,
+#btnLiberarHuerfanos,
+#btnDuplicados,
+#guardarModoCartonesBtn {
+  min-height: 44px;
+  padding: 12px 8px;
+  font-size: 14px;
+  margin: 5px 2px;
+  flex: 1;
+  min-width: 120px;
+}
+
+/* Contenedores flex para botones */
+#panel-admin > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* Grupos de botones en filas */
+#panel-admin > div:first-of-type {
+  margin-bottom: 15px;
+}
+
+/* Inputs del admin */
+#panel-admin input[type="number"],
+#panel-admin input[type="text"],
+#panel-admin input[type="password"],
+#panel-admin select {
+  min-height: 44px;
+  font-size: 16px; /* Previene zoom en iOS */
+  padding: 12px;
+  margin: 8px 0;
+}
+
+/* Configuración de precio */
+#panel-admin > div:nth-of-type(2) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+#precioCarton {
+  flex: 1;
+  min-width: 120px;
+  max-width: 200px;
+}
+
+/* Modo de cartones responsive */
+#contenedorCartonesFijos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0;
+}
+
+#cantidadCartonesFijos {
+  min-width: 80px;
+  max-width: 120px;
+}
+
+/* Lista de aprobados responsive */
+#listaAprobados {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+#listaAprobados table {
+  font-size: 12px;
+  min-width: 100%;
+}
+
+/* Formulario de ganadores responsive */
+#formularioGanadorContenedor {
+  max-width: 100%;
+}
+
+#formularioGanador input {
+  min-height: 44px;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+/* Contadores y estadísticas */
+#panel-admin p {
+  font-size: 14px;
+  margin: 8px 0;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+}
+
+/* Scroll suave para tablas */
+#tabla-comprobantes::-webkit-scrollbar {
+  height: 6px;
+}
+
+#tabla-comprobantes::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 3px;
+}
+
+/* Vista muy pequeña (menos de 480px) */
+@media (max-width: 480px) {
+  #admin {
+    padding: 12px;
+    margin: 10px auto;
+  }
+  
+  #tabla-comprobantes {
+    font-size: 10px;
+  }
+  
+  #tabla-comprobantes th,
+  #tabla-comprobantes td {
+    padding: 6px 4px;
+    min-width: 70px;
+  }
+  
+  /* Ocultar columnas menos importantes en móvil muy pequeño */
+  #tabla-comprobantes th:nth-child(4), /* Referido */
+  #tabla-comprobantes td:nth-child(4),
+  #tabla-comprobantes th:nth-child(6), /* Referencia */
+  #tabla-comprobantes td:nth-child(6) {
+    display: none;
+  }
+  
+  .btn-accion {
+    font-size: 16px;
+    padding: 4px 6px;
+  }
+  
+  #panel-admin .btn-admin {
+    font-size: 12px;
+    padding: 10px 6px;
+    min-width: 100px;
+  }
+}
+
+/* Mejora para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  #admin {
+    max-width: 98vw;
+  }
+  
+  #tabla-comprobantes {
+    font-size: 13px;
+  }
+}
+
+/* Estados hover solo para desktop */
+@media (hover: hover) and (pointer: fine) {
+  #tabla-comprobantes tbody tr:hover {
+    background: rgba(255,255,255,0.08);
+  }
+  
+  .btn-accion:hover {
+    background: rgba(255,255,255,0.1);
+  }
+}
+
+/* Asegurar que los botones sean táctiles */
+#panel-admin button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mensajes de estado */
+#estadoTotalCartones,
+#uploadStatus,
+#deleteStatus,
+#huerfanosResultado,
+#duplicadosResultado {
+  font-size: 14px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Organización vertical en móvil */
+@media (max-width: 768px) {
+  #panel-admin > div {
+    flex-direction: column;
+  }
+  
+  #panel-admin .btn-admin {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  #precioCarton {
+    max-width: 100%;
+  }
+  
+  /* Reorganizar controles de precio */
+  #panel-admin > div:nth-of-type(2) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  #guardarPrecioBtn {
+    width: 100%;
+  }
+}
