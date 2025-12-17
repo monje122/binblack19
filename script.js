@@ -1,5 +1,4 @@
-const supabaseUrl = 'https://rwvxdjhpsyfwylqwhzsb.supabase.co';
-const supabase = window.supabase.createClient(supabaseUrl, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3dnhkamhwc3lmd3lscXdoenNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA4Nzc5MjQsImV4cCI6MjA3NjQ1MzkyNH0.qFOYVLYs8RMmfJjOWhU2TvVrlQe8Bgpw6E5G0k0FbqY');
+const supabase = window.supabase;
 
 // Variables globales
 let cartonesOcupados = [];
