@@ -286,8 +286,6 @@
   </div>
 </div>
 
- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="script.js"></script>
 
  <footer style="text-align: center; padding: 20px; font-size: 13px; color: white; background-color: rgba(0,0,0,0.0);">
   © 2025 Bingo binblack19. Todos los derechos reservados. <br>
@@ -298,5 +296,20 @@
   <a href="index.html">
   </a>
 </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Crear la instancia global de Supabase y guardarla en window.supabase -->
+<script>
+  const supabaseUrl = 'https://rwvxdjhpsyfwylqwhzsb.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3dnhkamhwc3lmd3lscXdoenNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA4Nzc5MjQsImV4cCI6MjA3NjQ1MzkyNH0.qFOYVLYs8RMmfJjOWhU2TvVrlQe8Bgpw6E5G0k0FbqY';
+
+  // ✅ Esto crea UNA SOLA instancia global accesible desde todos los archivos
+  window.supabase = supabase.createClient(supabaseUrl, supabaseKey);
+</script>
+
+<!-- Cargar tu archivo script.js que usará esa instancia -->
+<script src="script.js"></script>
+
 </body>
 </html>
